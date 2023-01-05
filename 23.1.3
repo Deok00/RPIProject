@@ -1,0 +1,35 @@
+import RPi.GPIO as GPIO
+
+import time
+
+GPIO.setmode(GPIO.BOARD)
+
+GPIO.setwarnings(False)
+
+FND=[26 ,24, 22, 18, 16, 12, 10 ,8]
+
+
+GPIO.setup(FND,GPIO.OUT,initial=GPIO.LOW)
+
+fnd=[(0,0,1,1,1,1,1,1),
+     (0,0,0,0,0,1,1,0),
+     (0,1,0,1,1,0,1,1),
+     (0,1,0,0,1,1,1,1),
+     (0,1,1,0,0,1,1,0),
+     (0,1,1,0,1,1,0,1),
+     (0,1,1,1,1,1,0,1),
+     (0,0,0,0,0,1,1,1),
+     (0,1,1,1,1,1,1,1),
+     (0,1,1,0,1,1,1,1)
+    ]
+for i in range(0,10):
+    for j in range(0,8):
+        if fnd[i][j]==0:
+            GPIO.output(FND[j],GPIO.LOW)
+        else :
+            GPIO.output(FND[j],GPIO.HIGH)
+    time.sleep(1)
+
+    
+    
+    

@@ -1,11 +1,29 @@
-import RPi.GPIO as GPIO
+import RPi.GPIO as gp
 
 import time
 
-GPIO.setmode(GPIO.BOARD)
-LED1=8
-LED2=10
-LED3=12
-GPIO.setup(LED2,GPIO.OUT,intial=GPIO.LOW)
-GPIO.output(LED2,GPIO.HIGH)
-time.sleep(5)
+gp.setwarnings(False)
+gp.setmode(gp.BOARD)
+seg=[26,24,22,18,16,12,10,8]
+gp.setup(seg,gp.OUT,initial=gp.LOW)
+
+fnd =[(1,1,0,0,0,0,0,0),
+    (1,1,1,1,1,0,0,1),
+    (1,0,1,0,0,1,0,0),
+    (1,0,1,1,0,0,0,0),
+    (1,0,0,1,1,0,0,1),
+    (1,0,0,1,0,0,1,0),
+    (1,0,0,0,0,0,1,0),
+    (1,1,1,1,1,0,0,0),
+    (1,0,0,0,0,0,0,0),
+    (1,0,0,1,0,0,0,0)]
+
+
+
+while True:
+    try:
+         i=int(input())
+         gp.output(seg,fnd[i])
+         
+    except:
+        pass
